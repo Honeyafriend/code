@@ -23,7 +23,7 @@ contract MyToken {
         }
         uint256 elapsedTime = block.timestamp - issuanceDate;
         uint256 vestedTokens = (elapsedTime / (6 * 30 days)) * (totalSupply / 5); // 20% tokens released every 6 months
-        if (vestedTokens >= totalSupply) {
+        if (vvestedTokens >= totalSupply) {
             return totalSupply; // All tokens are vested
         } else {
             return vestedTokens - vestingSchedule[_beneficiary]; // Tokens already withdrawn deducted
