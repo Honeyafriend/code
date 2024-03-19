@@ -14,19 +14,6 @@ contract MyToken {
         issuanceDate = _issuanceDate;
         // Example vesting schedule: 20% of tokens released every 6 months after issuance date
         vestingSchedule[msg.sender] = totalSupply; // All tokens initially vested
-    }
-
-    // Function to calculate the amount of tokens that can be withdrawn based on the vesting schedule
-    function availableTokens(address _beneficiary) public view returns (uint256) {
-        if (block.timestamp < issuanceDate) {
-            return 0; // Tokens are not yet issued
-        }
-        uint256 elapsedTime = block.timestamp - issuanceDate;
-        uint256 vestedTokens = (elapsedTime / (6 * 30 days)) * (totalSupply / 5); // 20% tokens released every 6 months
-        if (vvestedTokens >= totalSupply) {
-            return totalSupply; // All tokens are vested
-        } else {
-            return vestedTokens - vestingSchedule[_beneficiary]; // Tokens already withdrawn deducted
         }
     }
 
